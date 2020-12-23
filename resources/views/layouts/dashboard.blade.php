@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/scrollspyNav.css') }}">
 
+    @yield('custom-styles')
+
 </head>
 <body  class="     ">
     
@@ -91,5 +93,7 @@
     </script>
     <script src="{{ asset('assets/js/scrollspyNav.js') }}"></script>
     <script src="{{ asset('plugins/highlight/highlight.pack.js') }}"></script>
+
+    @stack('custom-scripts')
 </body>
 </html>
