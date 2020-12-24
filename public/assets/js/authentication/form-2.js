@@ -16,3 +16,18 @@ if (togglePassword) {
 	  }
 	});
 }
+
+// confirm password toggle
+
+var togglePasswordConfirmation = document.getElementById("toggle-password-confirmation");
+
+if (togglePasswordConfirmation) {
+	togglePasswordConfirmation.addEventListener('click', function() {
+	  var y = document.getElementById("confirm_password");
+	  if (y.type === "password") {
+	    y.type = "text";
+	  } else {
+	    y.type = "password";
+	  }
+	});
+}

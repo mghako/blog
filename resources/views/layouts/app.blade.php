@@ -35,6 +35,6 @@
 
 
 
-    @stack('login-form2-script')
+    @stack('login-form2-scripts')
 </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/forms/theme-checkbox-radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/forms/switches.css') }}">
 @endsection
+
 @section('content')
 <div class="form-container outer">
         <div class="form-form">
@@ -34,7 +35,7 @@
                                 </div> --}}
                                 <div id="username-field" class="field-wrapper input">
                                     <label for="username">EMAIL</label>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-at-sign register"><circle cx="12" cy="12" r="4"></circle><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path></svg>
                                     <input id="username" name="email" type="text" class="form-control @error('email') is-invalid @enderror"" value="{{ old('email') }}" placeholder="e.g John_Doe">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -79,6 +80,3 @@
     </div>
 @endsection
 
-@push('login-form2-scripts')
-<script src="{{ asset('assets/js/authentication/form-2.js') }}"></script>
-@endpush

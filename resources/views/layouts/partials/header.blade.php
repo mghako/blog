@@ -2,15 +2,15 @@
 
     <ul class="navbar-item theme-brand flex-row  text-center">
         <li class="nav-item theme-logo">
-            <a href="/cork/laravel/ltr/vertical-light-menu/analytics">
+            <a href="#">
                 <img src="https://designreset.com/cork/laravel/ltr/vertical-light-menu/public/storage/img/logo.svg" class="navbar-logo" alt="logo">
             </a>
         </li>
         <li class="nav-item theme-text">
-            <a href="/cork/laravel/ltr/vertical-light-menu/analytics" class="nav-link"> CodeReset Blog </a>
+            <a href="#" class="nav-link"> CodeReset Blog </a>
         </li>
     </ul>
-    <ul class="navbar-item theme-brand flex-row  text-center">
+    {{-- <ul class="navbar-item theme-brand flex-row  text-center">
         <li class="nav-item theme-logo">
             <a href="#">
                 <img src="https://designreset.com/cork/laravel/ltr/vertical-light-menu/public/storage/img/logo.svg" class="navbar-logo" alt="logo">
@@ -19,7 +19,7 @@
         <li class="nav-item theme-text">
             <a href="/cork/laravel/ltr/vertical-light-menu/analytics" class="nav-link"> CodeReset Blog </a>
         </li>
-    </ul>
+    </ul> --}}
     
     
     <ul class="navbar-item flex-row ml-md-auto">
