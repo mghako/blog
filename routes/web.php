@@ -20,7 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
-
+Route::get('categories-datatable', 'CategoryController@datatable')->name('categories.datatable');
+Route::get('posts-datatable', 'PostController@datatable')->name('posts.datatable');
 
 Route::resources([
     'categories' => 'CategoryController',

@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>CodeReset Blog</title>
+    <title>@yield('page-title')</title>
     {{-- <link rel="icon" type="image/x-icon" href="https://designreset.com/cork/laravel/ltr/vertical-light-menu/public/storage/img/favicon.ico"/> --}}
 
     <!-- Styles -->
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/scrollspyNav.css') }}">
     <!-- sweet alert 2 -->
     <link rel="stylesheet" href="{{ asset('plugins/animate/animate.css') }}">
-    
+    @include('sweetalert::alert', ['cdn' => "{{ asset('plugins/sweetalerts/sweetalert2.min.css') }}"])
     <link rel="stylesheet" href="{{ asset('plugins/sweetalerts/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/custom-sweetalert.css') }}">
 
@@ -90,10 +90,13 @@
     </script>
     <script src="{{ asset('assets/js/scrollspyNav.js') }}"></script>
     <script src="{{ asset('plugins/highlight/highlight.pack.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <script src="{{ asset('plugins/sweetalerts/promise-polyfill.js') }}">
+    <script src="{{ asset('plugins/sweetalerts/promise-polyfill.js') }}"></script>
+    
     <script src="{{ asset('plugins/sweetalerts/sweetalert2.min.js')}}"></script>
+    
     <script src="{{ asset('plugins/sweetalerts/custom-sweetalert.js')}}"></script>
+    
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
 
     @stack('custom-scripts')
 </body>

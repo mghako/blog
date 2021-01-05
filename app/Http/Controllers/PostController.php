@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Http\Requests\storePostRequest;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class PostController extends Controller
 {
@@ -14,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('posts.index');
     }
 
     /**
@@ -24,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::cursor();
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -33,9 +38,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storePostRequest $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $category = Category::findOrFail($request->category_id);
+            $category->posts()->create($request->all());
+            DB::commit();
+            return back()->withSuccess('Post Created!');
+        } catch (\Throwable $th) {
+           DB::rollBack();
+
+           return redirect()->route('posts.index');
+        }
+        
     }
 
     /**
@@ -46,7 +62,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        // return view('post.show');
     }
 
     /**
@@ -57,7 +73,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit');
     }
 
     /**
@@ -80,6 +96,21 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return back()->withSuccess('POST Deleted!');
+    }
+    public function datatable(Request $request) {
+        if ($request->ajax()) {
+            $data = Post::latest()->get();
+            return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                        return "<a href='/posts/$row->id' class='edit btn btn-primary btn-sm'><i class='fas fa-eye'></i> View</a>";
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+      
+        return view('users');
     }
 }

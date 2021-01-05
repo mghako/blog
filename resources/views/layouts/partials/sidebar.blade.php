@@ -62,10 +62,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="submenu" data-parent="#accordionExample">
                     <li>
-                        <a href="javascript:void(0);"> Create </a>
+                        <a href="{{ route('posts.create') }}"> Create </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);"> View </a>
+                        <a href="{{ route('posts.index') }}"> View </a>
                     </li>                           
                 </ul>
             </li>
