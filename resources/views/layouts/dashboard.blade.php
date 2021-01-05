@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>CodeReset Blog</title>
+    <title>@yield('page-title')</title>
     {{-- <link rel="icon" type="image/x-icon" href="https://designreset.com/cork/laravel/ltr/vertical-light-menu/public/storage/img/favicon.ico"/> --}}
 
     <!-- Styles -->
@@ -22,9 +22,16 @@
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/scrollspyNav.css') }}">
+    <!-- sweet alert 2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/animate/animate.css') }}">
+    @include('sweetalert::alert', ['cdn' => "{{ asset('plugins/sweetalerts/sweetalert2.min.css') }}"])
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalerts/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/custom-sweetalert.css') }}">
+
+    @yield('custom-styles')
 
 </head>
-<body  class="     ">
+<body  class="">
     
     <!-- BEGIN LOADER -->
     <div id="load_screen"> <div class="loader"> <div class="loader-content">
@@ -49,30 +56,22 @@
         <div class="overlay"></div>
         <div class="search-overlay"></div>
 
-    <!--  BEGIN SIDEBAR  -->
-    @include('layouts.partials.sidebar')
-    <!--  END SIDEBAR  -->
+        <!--  BEGIN SIDEBAR  -->
+        @include('layouts.partials.sidebar')
+        <!--  END SIDEBAR  -->
 
 
         <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
-                <div class="row layout-top-spacing">
+                <div class="layout-top-spacing">
                     @yield('content')
                 </div>
             </div>
-
-            
-    <!--  BEGIN SIDEBAR  -->
-    
-    <!--  END SIDEBAR  -->
-
-
-    <!--  BEGIN FOOTER  -->
-    @include('layouts.partials.footer')
-    <!--  END FOOTER  -->
-
-    </div>
+            <!--  BEGIN FOOTER  -->
+            @include('layouts.partials.footer')
+            <!--  END FOOTER  -->
+        </div>
         <!--  END CONTENT PART  -->
 
     </div>
@@ -91,5 +90,14 @@
     </script>
     <script src="{{ asset('assets/js/scrollspyNav.js') }}"></script>
     <script src="{{ asset('plugins/highlight/highlight.pack.js') }}"></script>
+    <script src="{{ asset('plugins/sweetalerts/promise-polyfill.js') }}"></script>
+    
+    <script src="{{ asset('plugins/sweetalerts/sweetalert2.min.js')}}"></script>
+    
+    <script src="{{ asset('plugins/sweetalerts/custom-sweetalert.js')}}"></script>
+    
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+    @stack('custom-scripts')
 </body>
 </html>

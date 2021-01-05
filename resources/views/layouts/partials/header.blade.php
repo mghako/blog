@@ -2,15 +2,15 @@
 
     <ul class="navbar-item theme-brand flex-row  text-center">
         <li class="nav-item theme-logo">
-            <a href="/cork/laravel/ltr/vertical-light-menu/analytics">
+            <a href="#">
                 <img src="https://designreset.com/cork/laravel/ltr/vertical-light-menu/public/storage/img/logo.svg" class="navbar-logo" alt="logo">
             </a>
         </li>
         <li class="nav-item theme-text">
-            <a href="/cork/laravel/ltr/vertical-light-menu/analytics" class="nav-link"> CodeReset Blog </a>
+            <a href="#" class="nav-link"> CodeReset Blog </a>
         </li>
     </ul>
-    <ul class="navbar-item theme-brand flex-row  text-center">
+    {{-- <ul class="navbar-item theme-brand flex-row  text-center">
         <li class="nav-item theme-logo">
             <a href="#">
                 <img src="https://designreset.com/cork/laravel/ltr/vertical-light-menu/public/storage/img/logo.svg" class="navbar-logo" alt="logo">
@@ -19,7 +19,7 @@
         <li class="nav-item theme-text">
             <a href="/cork/laravel/ltr/vertical-light-menu/analytics" class="nav-link"> CodeReset Blog </a>
         </li>
-    </ul>
+    </ul> --}}
     
     
     <ul class="navbar-item flex-row ml-md-auto">
@@ -45,7 +45,8 @@
                                     document.getElementById('logout-form').submit();"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Sign Out</a>
                     </div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        <input type="hidden" name="_token" value="TKpsdUCziZzm71a3AdLweiE9jhHH3psdjDAJ7bnz">                            </form>
+                        @csrf
+                    </form>
                 </div>
             </div>
         </li>
