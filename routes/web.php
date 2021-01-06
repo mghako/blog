@@ -23,6 +23,8 @@ Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('categories-datatable', 'CategoryController@datatable')->name('categories.datatable');
 Route::get('posts-datatable', 'PostController@datatable')->name('posts.datatable');
 
+// profile route
+Route::get('/profile/{id}', 'ProfileController@index');
 Route::resources([
     'categories' => 'CategoryController',
     'posts' => 'PostController'

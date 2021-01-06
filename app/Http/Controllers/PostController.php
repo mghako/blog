@@ -62,7 +62,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // return view('post.show');
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -73,7 +73,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.edit');
+        return view('posts.edit', compact('post'));
     }
 
     /**

@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->longText('content');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
-
+            $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
