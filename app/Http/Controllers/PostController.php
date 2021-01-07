@@ -11,6 +11,10 @@ use Yajra\DataTables\Facades\DataTables;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -62,7 +66,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $categories = Category::cursor();
+        return view('posts.show', compact('post', 'categories'));
     }
 
     /**

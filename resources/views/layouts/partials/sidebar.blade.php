@@ -83,7 +83,7 @@
                 </a>
                 <ul class="submenu list-unstyled collapse" id="users" data-parent="#accordionExample" style="">
                     <li class="">
-                        <a href="/cork/laravel/ltr/vertical-light-menu/users/profile"> Profile </a>
+                        <a href="{{route('profiles.show', auth()->user()->id) }}"> Profile </a>
                     </li>
                     <li class="">
                         <a href="/cork/laravel/ltr/vertical-light-menu/users/account_settings"> Account Settings </a>

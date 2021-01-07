@@ -24,7 +24,7 @@ Route::get('categories-datatable', 'CategoryController@datatable')->name('catego
 Route::get('posts-datatable', 'PostController@datatable')->name('posts.datatable');
 
 // profile route
-Route::get('/profile/{id}', 'ProfileController@index');
+Route::get('/profile/{id}', 'ProfileController@index')->name('profiles.show');
 Route::resources([
     'categories' => 'CategoryController',
     'posts' => 'PostController'
