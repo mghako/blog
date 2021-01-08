@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\storePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,10 @@ use Yajra\DataTables\Facades\DataTables;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -62,7 +67,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // return view('post.show');
+        $categories = Category::cursor();
+        return view('posts.show', compact('post', 'categories'));
     }
 
     /**
@@ -73,7 +79,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.edit');
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -83,9 +89,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        
+        DB::beginTransaction();
+        try {
+            $post->update($request->all());
+            DB::commit();
+            return back()->withSuccess('Post Updated!');
+        } catch (\Throwable $th) {
+           DB::rollBack();
+
+           return redirect()->route('posts.index');
+        }
     }
 
     /**
