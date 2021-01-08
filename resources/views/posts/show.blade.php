@@ -10,9 +10,9 @@
             <div class="col-12 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form ID="FormID" action="{{ route('posts.update') }}" method="POST">
+                        <form ID="FormID" action="{{ route('posts.update', $post->id) }}" method="POST">
                             @csrf
-                            
+                            @method('PATCH')
                             <div class="form-group">
                                 <div class="input-group mb-4">
                                     <div class="input-group-prepend">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\storePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -88,9 +89,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        
+        DB::beginTransaction();
+        try {
+            $post->update($request->all());
+            DB::commit();
+            return back()->withSuccess('Post Updated!');
+        } catch (\Throwable $th) {
+           DB::rollBack();
+
+           return redirect()->route('posts.index');
+        }
     }
 
     /**
