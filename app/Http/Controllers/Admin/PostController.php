@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -46,17 +47,35 @@ class PostController extends Controller
      */
     public function store(storePostRequest $request)
     {
-        DB::beginTransaction();
-        try {
-            $category = Category::findOrFail($request->category_id);
-            $category->posts()->create($request->all());
-            DB::commit();
-            return back()->withSuccess('Post Created!');
-        } catch (\Throwable $th) {
-           DB::rollBack();
+        
+        $category = Category::findOrFail($request->category_id);
+        $post = $category->posts()->create($request->all());
+        // store image
+            $image_name = $request->file('image_url')->getClientOriginalName();
+            // this code return true value --- so dont confuse why i used twice xD;
+            $createdDirectory = Storage::makeDirectory('/public/img/post/' . $post->id);
+            
+            // directed created
+           
+            if($createdDirectory) {
+                
+                $path =$request->file('image_url')->storeAs('/img/post/' . $post->id, $request->file('image_url')->getClientOriginalName(), 'public');
+                $post->image_url = $path;
+                $post->save();
+            }
+            return redirect()->route('posts.index');
+        // end store image
+        // DB::beginTransaction();
+        // try {
+        //     $category = Category::findOrFail($request->category_id);
+        //     $post = $category->posts()->create($request->all());
+        //     DB::commit();
+        //     return back()->withSuccess('Post Created!');
+        // } catch (\Throwable $th) {
+        //    DB::rollBack();
 
-           return redirect()->route('posts.index');
-        }
+        //    return redirect()->route('posts.index');
+        // }
         
     }
 
