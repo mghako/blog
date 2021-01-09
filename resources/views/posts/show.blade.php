@@ -9,10 +9,24 @@
         <div class="row">
             <div class="col-12 mx-auto">
                 <div class="card">
+                    <div class="card-image">
+                        <img src="{!! asset('/storage/'.$post->image_url) !!}" class="img-fluid" alt="">
+                    </div>
                     <div class="card-body">
-                        <form ID="FormID" action="{{ route('posts.update', $post->id) }}" method="POST">
+                        <form ID="FormID" action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
+                            <div class="form-group">
+                                
+                                <div class="input-group mb-4">
+                                    
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Heading Image</span>
+                                    </div>
+                                    <input type="file" name="image_url" class="form-control" aria-label="Heading Image" accept="image/png, image/jpeg" style="margin-top: 0px; margin-bottom: 0px; height: 56px;">
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="input-group mb-4">
                                     <div class="input-group-prepend">

@@ -47,35 +47,33 @@ class PostController extends Controller
      */
     public function store(storePostRequest $request)
     {
-        
-        $category = Category::findOrFail($request->category_id);
-        $post = $category->posts()->create($request->all());
-        // store image
-            $image_name = $request->file('image_url')->getClientOriginalName();
-            // this code return true value --- so dont confuse why i used twice xD;
-            $createdDirectory = Storage::makeDirectory('/public/img/post/' . $post->id);
-            
-            // directed created
-           
-            if($createdDirectory) {
-                
-                $path =$request->file('image_url')->storeAs('/img/post/' . $post->id, $request->file('image_url')->getClientOriginalName(), 'public');
-                $post->image_url = $path;
-                $post->save();
-            }
-            return redirect()->route('posts.index');
-        // end store image
-        // DB::beginTransaction();
-        // try {
-        //     $category = Category::findOrFail($request->category_id);
-        //     $post = $category->posts()->create($request->all());
-        //     DB::commit();
-        //     return back()->withSuccess('Post Created!');
-        // } catch (\Throwable $th) {
-        //    DB::rollBack();
+        try {
+            $category = Category::findOrFail($request->category_id);
+            $post = $category->posts()->create($request->all());
 
-        //    return redirect()->route('posts.index');
-        // }
+            if($request->hasFile('image_url')) {
+                // store image
+                $image_name = $request->file('image_url')->getClientOriginalName();
+                // this code return true value --- so dont confuse why i used twice xD;
+                $createdDirectory = Storage::makeDirectory('/public/img/post/' . $post->id);
+                
+                // directed created
+                if($createdDirectory) {
+                    
+                    $path =$request->file('image_url')->storeAs('/img/post/' . $post->id, $request->file('image_url')->getClientOriginalName(), 'public');
+                    $post->image_url = $path;
+                    $post->save();
+                }
+            }
+            
+            return redirect()->route('posts.index');
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            return redirect()->route('posts.index');
+
+        }
         
     }
 
@@ -112,16 +110,44 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         
-        DB::beginTransaction();
+        // DB::beginTransaction();
+        // try {
+        //     $post->update($request->all());
+        //     DB::commit();
+        //     return back()->withSuccess('Post Updated!');
+        // } catch (\Throwable $th) {
+        //    DB::rollBack();
+
+        //    return redirect()->route('posts.index');
+        // }
+        // dd($request);
         try {
             $post->update($request->all());
-            DB::commit();
-            return back()->withSuccess('Post Updated!');
-        } catch (\Throwable $th) {
-           DB::rollBack();
 
-           return redirect()->route('posts.index');
+            if($request->hasFile('image_url')) {
+                // store image
+                $image_name = $request->file('image_url')->getClientOriginalName();
+                // this code return true value --- so dont confuse why i used twice xD;
+                $createdDirectory = Storage::makeDirectory('/public/img/post/' . $post->id);
+                
+                // directed created
+                if($createdDirectory) {
+                    
+                    $path =$request->file('image_url')->storeAs('/img/post/' . $post->id, $request->file('image_url')->getClientOriginalName(), 'public');
+                    $post->image_url = $path;
+                    $post->save();
+                }
+            }
+            DB::commit();
+            return redirect()->route('posts.index');
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            return redirect()->route('posts.index');
+
         }
+        
     }
 
     /**

@@ -7,7 +7,7 @@
             </a>
         </li>
         <li class="nav-item theme-text">
-            <a href="#" class="nav-link"> CodeReset Blog </a>
+            <a href="#" class="nav-link"> CodeBarrels Blog </a>
         </li>
     </ul>
     {{-- <ul class="navbar-item theme-brand flex-row  text-center">
