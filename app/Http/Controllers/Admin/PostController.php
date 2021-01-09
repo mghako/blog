@@ -110,17 +110,6 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         
-        // DB::beginTransaction();
-        // try {
-        //     $post->update($request->all());
-        //     DB::commit();
-        //     return back()->withSuccess('Post Updated!');
-        // } catch (\Throwable $th) {
-        //    DB::rollBack();
-
-        //    return redirect()->route('posts.index');
-        // }
-        // dd($request);
         try {
             $post->update($request->all());
 
