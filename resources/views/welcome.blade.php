@@ -16,7 +16,7 @@
     </head>
     <body id="app">
         
-        <h1>Welcome to Blog</h1>
+        <h1 class="text-center">Welcome to Blog</h1>
         <div class="container">
             <div class="row">
             @foreach($posts as $post)
