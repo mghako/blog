@@ -10,7 +10,7 @@ class Post extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'title', 'content', 'category_id'
+        'title', 'content', 'image_url'
     ];
 
     public function category() {
