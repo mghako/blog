@@ -11,24 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');
+
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::namespace('Admin')->prefix('admin')->group(function () {
+
+    Route::resources([
+        'categories' => 'CategoryController',
+        'posts' => 'PostController'
+    ]);
+    Route::get('/profile/{id}', 'ProfileController@index')->name('profiles.show'); // profile route
+    // datatable routes
+    Route::get('categories-datatable', 'CategoryController@datatable')->name('categories.datatable');
+    Route::get('posts-datatable', 'PostController@datatable')->name('posts.datatable');
+
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
-
-Route::get('categories-datatable', 'CategoryController@datatable')->name('categories.datatable');
-Route::get('posts-datatable', 'PostController@datatable')->name('posts.datatable');
-
-// profile route
-Route::get('/profile/{id}', 'ProfileController@index')->name('profiles.show');
-Route::resources([
-    'categories' => 'CategoryController',
-    'posts' => 'PostController'
-]);
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

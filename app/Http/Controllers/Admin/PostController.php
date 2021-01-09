@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Requests\storePostRequest;
@@ -9,6 +9,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -116,12 +117,13 @@ class PostController extends Controller
         return back()->withSuccess('POST Deleted!');
     }
     public function datatable(Request $request) {
+        
         if ($request->ajax()) {
             $data = Post::latest()->get();
             return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-                        return "<a href='/posts/$row->id' class='edit btn btn-primary btn-sm'><i class='fas fa-eye'></i> View</a>";
+                        return "<a href='/admin/posts/$row->id' class='edit btn btn-primary btn-sm'><i class='fas fa-eye'></i> View</a>";
                     })
                     ->rawColumns(['action'])
                     ->make(true);
