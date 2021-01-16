@@ -5,30 +5,25 @@
     <link rel="stylesheet" href="{{ asset('plugins/table/datatable/dt-global_style-light.css') }}">
 @endsection
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 table-responsive">
-                    <h2>Categories</h2>
-                        <div class="widget-content widget-content-area br-6">
-                            <div class="table-responsivemb-4 mt-4">
-                                <table id="categoriesTbl" class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
+            <div class="col-md-10 table-responsive">
+            <h2>Categories</h2>
+                <div class="widget-content widget-content-area br-6">
+                    <div class="table-responsivemb-4 mt-4">
+                        <table id="categoriesTbl" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
 
-                                    <tbody>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
