@@ -12,6 +12,6 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        return view('profile.index');
+        return view('admin.profile.index');
     }
 }

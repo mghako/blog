@@ -13,7 +13,7 @@
                         <img src="{!! asset('/storage/'.$post->image_url) !!}" class="img-fluid" alt="">
                     </div>
                     <div class="card-body">
-                        <form ID="FormID" action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                        <form ID="FormID" action="{{ route('admin.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="form-group">

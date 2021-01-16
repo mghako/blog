@@ -22,7 +22,7 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::namespace('Admin')->prefix('admin')->group(function () {
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     Route::resources([
         'categories' => 'CategoryController',

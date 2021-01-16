@@ -31,10 +31,12 @@
             @foreach($posts as $post)
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="{!! asset('/storage/'.$post->image_url) !!}" class="img-fluid" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title heading-font font-16">{{ $post->title }}</h5>
-                        </div>
+                        <a href="{{ route('posts.show', $post->id) }}" class="text-reset text-decoration-none">
+                            <img src="{!! asset('/storage/'.$post->image_url) !!}" class="img-fluid" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title heading-font font-16">{{ $post->title }}</h5>
+                            </div>
+                        </a>
                     </div>
                 </div>
             @endforeach
