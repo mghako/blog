@@ -10,7 +10,7 @@
             <div class="col-12 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form ID="FormID" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                        <form ID="FormID" action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <div class="input-group mb-4">

@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        return view('admin.posts.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::cursor();
-        return view('posts.create', compact('categories'));
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -66,12 +66,12 @@ class PostController extends Controller
                 }
             }
             
-            return redirect()->route('posts.index');
+            return redirect()->route('admin.posts.index');
 
         } catch (\Throwable $th) {
 
             DB::rollBack();
-            return redirect()->route('posts.index');
+            return redirect()->route('admin.posts.index');
 
         }
         
@@ -86,7 +86,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $categories = Category::cursor();
-        return view('posts.show', compact('post', 'categories'));
+        return view('admin.posts.show', compact('post', 'categories'));
     }
 
     /**
@@ -97,7 +97,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -128,12 +128,12 @@ class PostController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->route('posts.index');
+            return redirect()->route('admin.posts.index');
 
         } catch (\Throwable $th) {
 
             DB::rollBack();
-            return redirect()->route('posts.index');
+            return redirect()->route('admin.posts.index');
 
         }
         

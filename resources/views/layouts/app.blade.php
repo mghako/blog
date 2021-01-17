@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>CodeReset Blog</title>
+    <title>CodeBarrels Tech</title>
     {{-- <link rel="icon" type="image/x-icon" href="https://designreset.com/cork/laravel/ltr/vertical-light-menu/public/storage/img/favicon.ico"/> --}}
 
     <!-- Styles -->

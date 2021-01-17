@@ -9,7 +9,7 @@
             <div class="col-lg-6 col-12 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('categories.store') }}" method="POST">
+                        <form action="{{ route('admin.categories.store') }}" method="POST">
                             @csrf
                             <div class="form-group d-flex justify-content-between align-items-center">
                                 <div class="">

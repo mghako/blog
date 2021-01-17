@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'PostController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PostController@index')->name('home');
 Route::get('/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');
 
 
@@ -22,7 +22,7 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::namespace('Admin')->prefix('admin')->group(function () {
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     Route::resources([
         'categories' => 'CategoryController',
@@ -34,3 +34,6 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::get('posts-datatable', 'PostController@datatable')->name('posts.datatable');
 
 });
+
+Route::get('posts', 'PostController@index')->name('posts.index');
+Route::get('posts/{post}', 'PostController@show')->name('posts.show');

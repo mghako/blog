@@ -14,10 +14,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled show" id="starter-kit" data-parent="#accordionExample">
                     <li class="">
-                        <a href="{{ route('categories.index') }}"> Categories </a>
+                        <a href="{{ route('admin.categories.index') }}"> Categories </a>
                     </li>
                     <li class="">
-                        <a href="#"> Posts </a>
+                        <a href="{{ route('admin.posts.index') }}"> Posts </a>
                     </li>
                 </ul>
             </li>
@@ -42,10 +42,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
                     <li>
-                        <a href="{{ route('categories.create') }}"> Create </a>
+                        <a href="{{ route('admin.categories.create') }}"> Create </a>
                     </li>
                     <li>
-                        <a href="{{ route('categories.index') }}"> View </a>
+                        <a href="{{ route('admin.categories.index') }}"> View </a>
                     </li>
                 </ul>
             </li>
@@ -62,10 +62,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="submenu" data-parent="#accordionExample">
                     <li>
-                        <a href="{{ route('posts.create') }}"> Create </a>
+                        <a href="{{ route('admin.posts.create') }}"> Create </a>
                     </li>
                     <li>
-                        <a href="{{ route('posts.index') }}"> View </a>
+                        <a href="{{ route('admin.posts.index') }}"> View </a>
                     </li>                           
                 </ul>
             </li>
@@ -83,10 +83,10 @@
                 </a>
                 <ul class="submenu list-unstyled collapse" id="users" data-parent="#accordionExample" style="">
                     <li class="">
-                        <a href="{{route('profiles.show', auth()->user()->id) }}"> Profile </a>
+                        <a href="{{route('admin.profiles.show', auth()->user()->id) }}"> Profile </a>
                     </li>
                     <li class="">
-                        <a href="/cork/laravel/ltr/vertical-light-menu/users/account_settings"> Account Settings </a>
+                        <a href="#"> Account Settings </a>
                     </li>
                 </ul>
             </li>
