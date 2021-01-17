@@ -30,7 +30,7 @@
            
             @foreach($posts as $post)
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card mb-4" style="max-height: 400px;">
                         <a href="{{ route('posts.show', $post->id) }}" class="text-reset text-decoration-none">
                             <img src="{!! asset('/storage/'.$post->image_url) !!}" class="img-fluid" alt="">
                             <div class="card-body">

@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'PostController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PostController@index')->name('home');
 Route::get('/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');
 
 

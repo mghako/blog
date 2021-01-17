@@ -58,11 +58,11 @@
                 @include('partials.navbar')
 
                 {{-- include content here --}}
-                <div class="row">
-                    <div class="col-12 overflow-hidden">
+                {{-- <div class="row">
+                    <div class="col-12 overflow-hidden"> --}}
                         @yield('content')
-                    </div>
-                </div>
+                    {{-- </div>
+                </div> --}}
 
                 {{-- footer here --}}
                 @include('layouts.partials.footer')
