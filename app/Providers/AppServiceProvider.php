@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Category;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
+        // View::share('categories', Category::orderBy('name', 'asc')->get());
+        
+        View::composer(['front.posts.index', 'front.posts.show'], function ($view) {
+            $view->with('categories', Category::orderBy('name', 'asc')->get());
+        });
+
     }
 }
