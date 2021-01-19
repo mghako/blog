@@ -100,6 +100,7 @@
                 </li> --}}
                 <li class="nav-item theme-text">
                     <a href="#" class="nav-link"> Code Barrels </a>
+                    {{-- <img src="{{ asset('img/logo_transparent.png') }}" alt="" class="" style="width: 75px; height: 75px;"> --}}
                 </li>
             </ul>
 
@@ -108,7 +109,7 @@
                 
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img src="https://designreset.com/cork/laravel/ltr/vertical-light-menu/public/storage/img/profile-16.jpeg" alt="avatar">
+                        <img src="{{ asset('img/logo.png') }}" alt="" style="width: 50px; height: 50px;" alt="logo">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="">
@@ -140,7 +141,10 @@
     <!--  BEGIN NAVBAR  -->
     <div class="sub-header-container" style="max-width: 1140px;">
         <header class="header navbar navbar-expand-sm">
-            <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
+            <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </a>
 
             <ul class="navbar-nav flex-row">
                 <li>
@@ -193,7 +197,7 @@
             <ul class="list-unstyled menu-categories" id="accordionExample">
                 
                     <li class="menu">
-                        <a href="javascript:void(0);" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('posts.index') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                                 <span> Latest Posts</span>
@@ -201,7 +205,7 @@
                         </a>
                     </li>
                     <li class="menu active">
-                        <a href="#starter-kit" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <a href="#starter-kit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-terminal"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
                                 <span>Categories</span>
@@ -210,7 +214,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                             </div>
                         </a>
-                        <ul class="collapse submenu list-unstyled show" id="starter-kit" data-parent="#accordionExample">
+                        <ul class="collapse submenu list-unstyled" id="starter-kit" data-parent="#accordionExample">
                             @foreach($categories as $category)
                             <li class="">
                                 <a href=""> {{ ucfirst($category->name) }} </a>
