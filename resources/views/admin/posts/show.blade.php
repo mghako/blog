@@ -8,6 +8,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <div">
+                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                @CSRF
+                @method('delete')
+                    <button type="submit" class="btn btn-md btn-danger float-right mb-4">Delete</button>
+                </form>
+                </div>
                 <div class="card">
                     <div class="card-image">
                         <img src="{!! asset('/storage/'.$post->image_url) !!}" class="img-fluid" alt="">

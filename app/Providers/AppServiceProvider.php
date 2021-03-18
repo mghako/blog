@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
 
         // View::share('categories', Category::orderBy('name', 'asc')->get());
         
-        View::composer(['front.posts.index', 'front.posts.show'], function ($view) {
+        View::composer(['front.posts.index', 'front.posts.show', 'contact'], function ($view) {
             $view->with('categories', Category::orderBy('name', 'asc')->get());
         });
 

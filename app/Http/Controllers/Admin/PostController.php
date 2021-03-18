@@ -148,7 +148,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return back()->withSuccess('POST Deleted!');
+        return redirect()->route('admin.posts.index')->withSuccess('POST Deleted!');
     }
     public function datatable(Request $request) {
         

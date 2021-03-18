@@ -35,5 +35,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 });
 
+// front controllers 
 Route::get('posts', 'PostController@index')->name('posts.index');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
+
+// categories
+Route::get('/categories/{category}/posts','CategoryPostController@index')->name('categories.posts.index');
+
+// contact route
+Route::get('contacts', 'ContactController@index')->name('contacts.index');
